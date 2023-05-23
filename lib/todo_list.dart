@@ -17,15 +17,17 @@ class _TodoListState extends State<TodoList> {
         width: 800,
         child: ListView(
           children: [
-            ListTile(
-              tileColor: Colors.red,
-              leading: Checkbox(
-                value: checked,
-                onChanged: (value) => setState(() {
-                  checked = value!;
-                }),
+            Card(
+              elevation: 30,
+              child: ListTile(
+                leading: Checkbox(
+                  value: checked,
+                  onChanged: (value) => setState(() {
+                    checked = value!;
+                  }),
+                ),
+                title: const Text("Hello Bro"),
               ),
-              title: const Text("Hello Bro"),
             )
           ],
         ),
