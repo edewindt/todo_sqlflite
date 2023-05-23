@@ -6,6 +6,14 @@ class TabScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(length: 1,child: Scaffold(appBar: TabBar(tabs: [Icon(Icons.mark_as_unread)]), body: TabBarView(children: [TodoList()]),));
+    return DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: TabBar(
+            indicatorColor: Colors.black,
+            labelColor: Colors.black,
+              tabs: [Tab(child: Text("Unfinished")), Tab(child: Text("Finished"))]),
+          body: TabBarView(children: [TodoList(), Placeholder()]),
+        ));
   }
 }
