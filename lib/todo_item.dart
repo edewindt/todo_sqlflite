@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
 class TodoItem extends StatefulWidget {
+  final VoidCallback del;
   final bool checked;
-  final int id;
+  final String id;
   final String content;
-  const TodoItem({super.key, this.checked = false, this.id = 0, required this.content});
+  const TodoItem({super.key, this.checked = false, required this.id, required this.content, required this.del});
 
   @override
   State<TodoItem> createState() => _TodoItemState();
 }
 
 class _TodoItemState extends State<TodoItem> {
+  
   bool checked = false;
   String content = "";  
   bool editing = false;
@@ -69,9 +71,7 @@ class _TodoItemState extends State<TodoItem> {
                           IconButton(
                               splashColor: Colors.red,
                               splashRadius: 20,
-                              onPressed: () {
-                                print("Deleted");
-                              },
+                              onPressed:()=> widget.del(),
                               icon: Icon(Icons.delete)),
                               
                         ],
