@@ -14,6 +14,7 @@ class _TodoItemState extends State<TodoItem> {
   bool checked = false;
   String content = "";  
   bool editing = false;
+  bool entered = false;
   TextEditingController textcon = TextEditingController();
   @override
   setValues(){
@@ -26,49 +27,58 @@ class _TodoItemState extends State<TodoItem> {
     super.initState();
   }
   Widget build(BuildContext context) {
-    return Opacity(
-      opacity: checked ? .5 : 1,
-      child: Card(
-                elevation: 30,
-                child: ListTile(
-                  leading: Checkbox(
-                    value: checked,
-                    fillColor: MaterialStatePropertyAll(Colors.green),
-                    onChanged: (value) => setState(() {
-                      checked = value!;
-                    }),
-                  ),
-                  title: editing ? TextField(controller: textcon, onChanged: (value) {
-                    setState(() {
-                      content = value;
-                    });
-                  },) : Text(content),
-                  trailing: SizedBox(
-                    width: 80,
-                    child: Row(
-                      children: [
-                        IconButton(
-                            splashColor: Colors.green,
-                            splashRadius: 20,
-                            onPressed: () {
-                              setState(() {
-                                editing = !editing;
-                              });
-                            },
-                            icon: Icon(editing ? Icons.check : Icons.edit)),
-                        IconButton(
-                            splashColor: Colors.red,
-                            splashRadius: 20,
-                            onPressed: () {
-                              print("Deleted");
-                            },
-                            icon: Icon(Icons.delete)),
-                            
-                      ],
+
+    return MouseRegion(
+      onEnter: (event) => setState(() {
+        entered = true;
+      }),
+      onExit: (event) => setState(() {
+        entered = false;
+      }),
+      child: Opacity(
+        opacity: checked ? .5 : 1,
+        child: Card(
+                  elevation: 30,
+                  child: ListTile(
+                    leading: Checkbox(
+                      value: checked,
+                      fillColor: MaterialStatePropertyAll(Colors.green),
+                      onChanged: (value) => setState(() {
+                        checked = value!;
+                      }),
                     ),
+                    title: editing ? TextField(controller: textcon, onChanged: (value) {
+                      setState(() {
+                        content = value;
+                      });
+                    },) : Text(content),
+                    trailing: entered ? SizedBox(
+                      width: 80,
+                      child: Row(
+                        children: [
+                          IconButton(
+                              splashColor: Colors.green,
+                              splashRadius: 20,
+                              onPressed: () {
+                                setState(() {
+                                  editing = !editing;
+                                });
+                              },
+                              icon: Icon(editing ? Icons.check : Icons.edit)),
+                          IconButton(
+                              splashColor: Colors.red,
+                              splashRadius: 20,
+                              onPressed: () {
+                                print("Deleted");
+                              },
+                              icon: Icon(Icons.delete)),
+                              
+                        ],
+                      ),
+                    ) : null,
                   ),
                 ),
-              ),
+      ),
     );
   }
 }
