@@ -55,7 +55,7 @@ class _TodoItemState extends State<TodoItem> {
                                 editing = !editing;
                               });
                             },
-                            icon: Icon(Icons.edit)),
+                            icon: Icon(editing ? Icons.check : Icons.edit)),
                         IconButton(
                             splashColor: Colors.red,
                             splashRadius: 20,
