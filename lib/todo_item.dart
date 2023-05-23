@@ -14,18 +14,18 @@ class _TodoItemState extends State<TodoItem> {
   bool checked = false;
   String content = "";  
   bool editing = false;
+  TextEditingController textcon = TextEditingController();
   @override
   setValues(){
     checked = widget.checked;
     content = widget.content;
+    textcon.text = widget.content;
   }
   void initState() {
-    // TODO: implement initState
+    setValues();
     super.initState();
   }
   Widget build(BuildContext context) {
-      String content = widget.content;
-  
     return Opacity(
       opacity: checked ? .5 : 1,
       child: Card(
@@ -38,7 +38,11 @@ class _TodoItemState extends State<TodoItem> {
                       checked = value!;
                     }),
                   ),
-                  title: editing ? TextField() : Text(content),
+                  title: editing ? TextField(controller: textcon, onChanged: (value) {
+                    setState(() {
+                      content = value;
+                    });
+                  },) : Text(content),
                   trailing: SizedBox(
                     width: 80,
                     child: Row(
