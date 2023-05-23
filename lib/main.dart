@@ -10,7 +10,7 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("TodoAppSQLfLite")),
+        appBar: AppBar(title: Text("SQL Todo App"), centerTitle: true,backgroundColor: Colors.black,),
         body: Text("Hello World!"));
   }
 }
