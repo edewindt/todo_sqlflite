@@ -12,7 +12,8 @@ class TodoItem extends StatefulWidget {
 
 class _TodoItemState extends State<TodoItem> {
   bool checked = false;
-  String content = "";
+  String content = "";  
+  bool editing = false;
   @override
   setValues(){
     checked = widget.checked;
@@ -23,8 +24,8 @@ class _TodoItemState extends State<TodoItem> {
     super.initState();
   }
   Widget build(BuildContext context) {
-    
-    String content = widget.content;
+      String content = widget.content;
+  
     return Opacity(
       opacity: checked ? .5 : 1,
       child: Card(
@@ -37,14 +38,31 @@ class _TodoItemState extends State<TodoItem> {
                       checked = value!;
                     }),
                   ),
-                  title: Text(content),
-                  trailing: IconButton(
-                      splashColor: Colors.red,
-                      splashRadius: 20,
-                      onPressed: () {
-                        print("Deleted");
-                      },
-                      icon: Icon(Icons.delete)),
+                  title: editing ? TextField() : Text(content),
+                  trailing: SizedBox(
+                    width: 80,
+                    child: Row(
+                      children: [
+                        IconButton(
+                            splashColor: Colors.green,
+                            splashRadius: 20,
+                            onPressed: () {
+                              setState(() {
+                                editing = !editing;
+                              });
+                            },
+                            icon: Icon(Icons.edit)),
+                        IconButton(
+                            splashColor: Colors.red,
+                            splashRadius: 20,
+                            onPressed: () {
+                              print("Deleted");
+                            },
+                            icon: Icon(Icons.delete)),
+                            
+                      ],
+                    ),
+                  ),
                 ),
               ),
     );
