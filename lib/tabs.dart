@@ -13,7 +13,7 @@ class TabScreen extends StatelessWidget {
             backgroundColor: Colors.black,
             title: Text("SQL Todo App"),
             centerTitle: true,
-            bottom: TabBar(
+            bottom: TabBar(indicatorColor: Colors.white,
                 tabs: [Tab(child: Text("Unfinished")), Tab(child: Text("Finished"))]),
           ),
           body: TabBarView(children: [TodoList(), Placeholder()]),
