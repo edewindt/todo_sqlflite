@@ -4,7 +4,7 @@ class TodoItem extends StatefulWidget {
   final bool checked;
   final int id;
   final String content;
-  const TodoItem({super.key, required this.checked, required this.id, required this.content});
+  const TodoItem({super.key, this.checked = false, this.id = 0, required this.content});
 
   @override
   State<TodoItem> createState() => _TodoItemState();

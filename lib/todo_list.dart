@@ -7,9 +7,12 @@ class TodoList extends StatefulWidget {
   @override
   State<TodoList> createState() => _TodoListState();
 }
-
 class _TodoListState extends State<TodoList> {
   bool checked = false;
+  bool adding = false;
+  String newTodo = "";
+  List<TodoItem> todos = [];
+  TextEditingController textcon = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -20,19 +23,25 @@ class _TodoListState extends State<TodoList> {
           children: [
             GestureDetector(
                 onTap: () {
-                  print("added");
+                  setState(() {
+                    adding = true;
+                  });
                 },
                 child: Container(
                   margin: EdgeInsets.symmetric(horizontal: 5),
                   height: 50,
-                  color: Colors.lightGreen,
+                  color: Color.fromARGB(255, 186, 217, 150),
                   child: Center(
-                      child: Text(
+                      child: adding ?  TextField(controller: textcon, onEditingComplete: () => setState(() {
+                        todos.add(TodoItem(content: newTodo)); textcon.text = "";
+                      }),onChanged: (value) => setState(() {
+                    newTodo = value; 
+                  }) ) : Text(
                     "Add",
                     style: TextStyle(fontWeight: FontWeight.bold),
-                  )),
+                  ))  ,
                 )),
-                TodoItem(checked: checked, id: 1, content: "Hello Bro")
+                for (var i in todos) TodoItem(id: i.id,checked: i.checked,content: i.content)
             
           ],
         ),
