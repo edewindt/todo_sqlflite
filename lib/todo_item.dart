@@ -11,9 +11,19 @@ class TodoItem extends StatefulWidget {
 }
 
 class _TodoItemState extends State<TodoItem> {
+  bool checked = false;
+  String content = "";
   @override
+  setValues(){
+    checked = widget.checked;
+    content = widget.content;
+  }
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   Widget build(BuildContext context) {
-    bool checked = widget.checked;
+    
     String content = widget.content;
     return Opacity(
       opacity: checked ? .5 : 1,
@@ -22,6 +32,7 @@ class _TodoItemState extends State<TodoItem> {
                 child: ListTile(
                   leading: Checkbox(
                     value: checked,
+                    fillColor: MaterialStatePropertyAll(Colors.green),
                     onChanged: (value) => setState(() {
                       checked = value!;
                     }),

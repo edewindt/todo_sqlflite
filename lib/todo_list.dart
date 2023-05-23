@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_sqlflite/todo_item.dart';
 
 class TodoList extends StatefulWidget {
   const TodoList({super.key});
@@ -17,30 +18,25 @@ class _TodoListState extends State<TodoList> {
         width: 800,
         child: ListView(
           children: [
-            GestureDetector(onTap: (){print("added");},child: Container(margin: EdgeInsets.symmetric(horizontal: 5),height: 50,color: Colors.lightGreen,child: Center(child:Text("Add", style: TextStyle(fontWeight: FontWeight.bold),)),)),
-            Card(
-              elevation: 30,
-              child: ListTile(
-                leading: Checkbox(
-                  value: checked,
-                  onChanged: (value) => setState(() {
-                    checked = value!;
-                  }),
-                ),
-                title: const Text("Hello Bro"),
-                trailing: IconButton(splashColor: Colors.red,splashRadius: 20,onPressed: (){print("Deleted");}, icon: Icon(Icons.delete)),
-              ),
-            )
+            GestureDetector(
+                onTap: () {
+                  print("added");
+                },
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 5),
+                  height: 50,
+                  color: Colors.lightGreen,
+                  child: Center(
+                      child: Text(
+                    "Add",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  )),
+                )),
+                TodoItem(checked: checked, id: 1, content: "Hello Bro")
+            
           ],
         ),
       ),
     );
   }
-}
-
-class TodoListItem {
-  final int id;
-  final String content;
-  bool isChecked;
-  TodoListItem(this.isChecked, {required this.id, required this.content});
 }
