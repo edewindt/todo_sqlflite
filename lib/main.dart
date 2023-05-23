@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_sqlflite/todo_list.dart';
 
 void main() {
   runApp(const MaterialApp(home: TodoApp(), debugShowCheckedModeBanner: false,));
@@ -10,7 +11,7 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("SQL Todo App"), centerTitle: true,backgroundColor: Colors.black,),
-        body: Text("Hello World!"));
+        appBar: AppBar(title: const Text("SQL Todo App"), centerTitle: true,backgroundColor: Colors.black,),
+        body: const TodoList());
   }
 }
