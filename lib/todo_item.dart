@@ -45,6 +45,7 @@ class _TodoItemState extends State<TodoItem> {
                       fillColor: MaterialStatePropertyAll(Colors.green),
                       onChanged: (value) => setState(() {
                         checked = value!;
+                        editing = false;
                       }),
                     ),
                     title: editing ? TextField(controller: textcon, onChanged: (value) {
@@ -52,7 +53,7 @@ class _TodoItemState extends State<TodoItem> {
                         content = value;
                       });
                     },) : Text(content),
-                    trailing: entered ? SizedBox(
+                    trailing: entered && !checked ? SizedBox(
                       width: 80,
                       child: Row(
                         children: [
