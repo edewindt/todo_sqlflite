@@ -9,10 +9,13 @@ class TabScreen extends StatelessWidget {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: TabBar(
-            indicatorColor: Colors.black,
-            labelColor: Colors.black,
-              tabs: [Tab(child: Text("Unfinished")), Tab(child: Text("Finished"))]),
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            title: Text("SQL Todo App"),
+            centerTitle: true,
+            bottom: TabBar(
+                tabs: [Tab(child: Text("Unfinished")), Tab(child: Text("Finished"))]),
+          ),
           body: TabBarView(children: [TodoList(), Placeholder()]),
         ));
   }

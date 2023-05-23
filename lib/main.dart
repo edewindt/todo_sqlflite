@@ -11,8 +11,6 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(title: const Text("SQL Todo App"), centerTitle: true,backgroundColor: Colors.black,),
-        body: const TabScreen());
+    return TabScreen();
   }
 }
