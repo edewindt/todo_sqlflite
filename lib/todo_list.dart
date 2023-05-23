@@ -27,6 +27,7 @@ class _TodoListState extends State<TodoList> {
                   }),
                 ),
                 title: const Text("Hello Bro"),
+                trailing: IconButton(onPressed: (){print("Deleted");}, icon: Icon(Icons.delete)),
               ),
             )
           ],
