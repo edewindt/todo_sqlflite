@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp( const MaterialApp(home: TodoApp()));
+  runApp(const MaterialApp(home: TodoApp(), debugShowCheckedModeBanner: false,));
 }
 
 class TodoApp extends StatelessWidget {
@@ -9,7 +9,8 @@ class TodoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Text("Hello World!"));
+    return Scaffold(
+        appBar: AppBar(title: Text("TodoAppSQLfLite")),
+        body: Text("Hello World!"));
   }
 }
-
