@@ -3,7 +3,11 @@ import 'package:todo_sqlflite/tabs.dart';
 import 'package:todo_sqlflite/todo_list.dart';
 
 void main() {
-  runApp(const MaterialApp(home: TodoApp(), debugShowCheckedModeBanner: false,));
+  // WidgetsFlutterBinding.ensureInitialized();
+  runApp(const MaterialApp(
+    home: TodoApp(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
 class TodoApp extends StatelessWidget {
